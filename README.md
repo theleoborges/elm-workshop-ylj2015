@@ -1,6 +1,6 @@
 # Elm Workshop
 
-## Setup - the easy way
+## Setup - the docker way
 
 - Clone this repository - this is where we'll be doing our work
 
@@ -26,8 +26,17 @@ Theoretically once you have this setup, you shouldn't need internet connection a
 
 
 
-## Mac and Windows users
+### Mac and Windows users
 
-You need to to setup [boot2docker](http://boot2docker.io/) before you can docker setup.
+You need to to setup [boot2docker](http://boot2docker.io/) before you can setup docker.
 
 Additionally, under windows and mac environments, the container has limited access to your filesystem so make sure to clone this project somewhere in your home directory.
+
+## Setup - non-docker way
+
+
+Mac and Windows have binaries [here](http://elm-lang.org/Install.elm). For Linux you will need to build from source so I highly recommend using the docker setup described above.
+
+Regardless of operating system however, the docker image also includes offline documentation which is desired for a workshop as internet access is limited.
+
+If you choose this path, be aware you might not be able to access the docs during the workshop, unless you can use some form of tethering.
