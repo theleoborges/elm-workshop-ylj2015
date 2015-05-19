@@ -22,16 +22,20 @@ type H = H
 --  2. abstracting common code into `displayObj`
 -- Hints: "de-structuring" can be useful for getting hold of data from `Game`
 
+
+-- Solution
 displayObj : Object a -> Shape -> Form
 displayObj obj shape =
-    H
+    move (obj.x,obj.y) (filled white shape) -- H
 
 display : (Int,Int) -> Game -> Element
-display (w,h) game =
+display (w,h) {player1,player2, ball} =
   container w h middle <|
   collage gameWidth gameHeight
               [ filled pongGreen (rect gameWidth gameHeight),
-                H
+                displayObj player1 (rect 10 40),
+                displayObj player2 (rect 10 40),
+                displayObj ball    (oval 15 15)
               ]
 
 
@@ -40,6 +44,9 @@ main = display <~ Window.dimensions ~ gameState
 --
 -- At this point, try moving the paddles around :)
 --
+
+
+
 
 
 

@@ -48,13 +48,23 @@ keysOverTime = sampleOn delta <| Signal.map2 (,) Keyboard.wasd Keyboard.arrows
 -- main = Signal.map show keysOverTime
 
 
--- ... however we would like a Signal that represents the Input type we defined above.
--- Hint:
---   - remember `Input` can be used as a function
+-- ... however we would like a Signal that represents the Input type we defined above, with the following type:
 
 
+--
+-- Solution
+--
 input : Signal Input
-input = sampleOn delta <| H
+input = sampleOn delta <| Input <~ Signal.map (intToDir << .y) Keyboard.wasd
+                                 ~ Signal.map (intToDir << .y) Keyboard.arrows
+                                 ~ delta
+
+
+-- above can also be written as
+-- input' : Signal Input
+-- input' = sampleOn delta <| Signal.map3 Input (Signal.map (intToDir << .y) Keyboard.wasd)
+--                                              (Signal.map (intToDir << .y) Keyboard.arrows)
+--                                              delta
 
 main : Signal Element
 main = Signal.map show input

@@ -49,14 +49,14 @@ stepGame {paddle1,paddle2,delta}
 -- Create a Game signal that represents our game state over time
 -- This signal uses `defaultGame` as its initial state and iterates over it using `stepGame` above
 -- Hint:
---   - we need to "accumulate" game states over time
+--   - we need to "accumulate" values
+
+
+-- Solution
 gameState : Signal Game
-gameState = H
+gameState = foldp stepGame defaultGame input
 
 main = Signal.map show gameState
-
-
-
 
 
 

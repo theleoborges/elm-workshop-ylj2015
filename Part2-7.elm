@@ -23,8 +23,14 @@ textGreen = rgb 160 200 160
 -- Let's put it all together by creating a scene composed of the court and the two paddles,
 -- one on each side of the court
 
+-- -- Solution
 display : (Int,Int) -> Element
 display (w,h) =
-  H
+  container w h middle <|
+  collage gameWidth gameHeight
+              [ filled pongGreen (rect gameWidth gameHeight),
+                move (20-halfWidth, 0) (filled white (rect 10 40)),
+                move (halfWidth-20, 0) (filled white (rect 10 40))
+              ]
 
 main = Signal.map display Window.dimensions

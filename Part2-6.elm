@@ -24,8 +24,12 @@ textGreen = rgb 160 200 160
 -- Using the same ideas from the previous exercise, create a scene with a paddle of dimensions 10x40 in it.
 -- Since we'll draw on white background, make sure the paddle is any colour other than white
 
+-- Solution
 displayPaddle : (Int,Int) -> Element
 displayPaddle (w,h) =
-  H
+  container w h middle <|
+  collage gameWidth gameHeight
+              [ (filled black (rect 10 40))
+              ]
 
 main = Signal.map displayPaddle Window.dimensions

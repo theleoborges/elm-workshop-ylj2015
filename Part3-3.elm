@@ -52,6 +52,7 @@ stepBall t ({x,y,vx,vy} as ball) player1 player2 =
 -- Exercise 3.3
 -- Update `stepGame` to take into account animating the ball using the supporting functions above
 
+-- Solution
 stepGame : Input -> Game -> Game
 stepGame {paddle1,paddle2,delta}
          ({player1,player2,ball} as game) =
@@ -60,16 +61,18 @@ stepGame {paddle1,paddle2,delta}
 
       player1' = stepPlyr delta paddle1 player1
       player2' = stepPlyr delta paddle2 player2
+      ball'    = stepBall delta ball player1 player2
 
   in
       { game | player1 <- player1'
              , player2 <- player2'
-             , ball    <- H}
+             , ball    <- ball'}
+
 
 main = Signal.map2 display Window.dimensions gameState
 
 
--- Enjoy the game!!!
+-- Enjoy the game!
 
 
 -- Want more?
@@ -78,8 +81,6 @@ main = Signal.map2 display Window.dimensions gameState
 --   - The ability to pause the game by pressing SPACE
 --   - Displaying of scores
 -- more at: http://elm-lang.org/blog/Pong.elm
-
-
 
 
 

@@ -27,9 +27,12 @@ textGreen = rgb 160 200 160
 --   - the functions `containter` and `collage` might also be useful here
 
 
+-- Solution
 displayCourt : (Int,Int) -> Element
 displayCourt (w,h) =
-  H
+  container w h middle <|
+  collage gameWidth gameHeight
+   [ filled pongGreen   (rect gameWidth gameHeight)]
 
 
 main = Signal.map displayCourt Window.dimensions

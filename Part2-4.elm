@@ -37,13 +37,25 @@ orbit angle (x,y) form = move (x * sin angle, y * cos angle) form
 orbitCCW : Float -> (Float,Float) -> Form -> Form
 orbitCCW angle (x,y) form = move (x * cos angle, y * sin angle) form
 
+-- Solution
 scene3 : String -> Float -> (Int,Int) -> Element
 scene3 txt angle (w,h) =
     container w h middle <|
     collage gameWidth gameHeight
             [
-              H
+              filled yellow (rect 100 100),
+              filled red (ngon 5 100)
+                  |> alpha 0.5
+                  |> orbit angle (120,80),
+              filled purple (ngon 3 120)
+                  |> alpha 0.6
+                  |> orbitCCW angle (120,80),
+              filled blue (oval 100 100)
+                  |> orbit angle (160,120),
+              show txt
+                  |> toForm
+                  |> orbitCCW angle (120,80)
             ]
 
 main : Signal Element
-main = (scene3 "hello") <~ H
+main = (scene3 "hello") <~ time ~ Window.dimensions

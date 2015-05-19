@@ -29,6 +29,8 @@ textGreen = rgb 160 200 160
 --  - Make different shapes: look at the `ngon` function
 --  - Change colours; perhaps play with alpha
 
+
+-- Solution
 scene2 : String -> (Int,Int) -> Element
 scene2 txt (w,h) =
     container w h middle <|
@@ -36,7 +38,10 @@ scene2 txt (w,h) =
             [ toForm         <| show txt,
               move (50,50)   <| filled blue (oval 100 100),
               move (-70,-70) <| filled yellow (rect 100 100),
-              H
+              filled red (ngon 5 100)
+                       |> alpha 0.5,
+              filled purple (ngon 3 120)
+                       |> alpha 0.6
             ]
 
 main : Signal Element
