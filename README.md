@@ -2,15 +2,17 @@
 
 ## Setup - the easy way
 
+- Clone this repository - this is where we'll be doing our work
+
 - Ensure docker is installed and configured properly
 
 - Pull the docker image
 
-    docker pull leonardoborges/elmworkshop
+        docker pull leonardoborges/elmworkshop
     
 - Run the container    
 
-  docker run --net=host -v $PWD:/elm-workshop -w /elm-docs leonardoborges/elmworkshop
+        docker run --net=host -v $PWD:/elm-workshop -w /elm-docs leonardoborges/elmworkshop
   
   
 This will setup a new docker container exposing two ports: 3000 and 8000
