@@ -32,6 +32,16 @@ You need to to setup [boot2docker](http://boot2docker.io/) before you can setup 
 
 Additionally, under windows and mac environments, the container has limited access to your filesystem so make sure to clone this project somewhere in your home directory.
 
+On Mac OS X you can install `docker` and `boot2docker` using [homebrew](http://brew.sh):
+
+```sh
+brew install docker boot2docker
+boot2docker init
+boot2docker start
+```
+
+Then continue the setup as described above.
+
 ## Setup - non-docker way
 
 
