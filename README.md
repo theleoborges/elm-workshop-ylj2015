@@ -17,8 +17,8 @@
   
 This will setup a new docker container exposing two ports: 3000 and 8000
 
-`http://$CONTAINER_IP:8000/` - Has elm-reactor running with a sample Hello.elm file. Click on it and try it out
-`http://$CONTAINER_IP:3000/` - Has offline docs for Elm's core libraries
+- `http://$CONTAINER_IP:8000/` - Has elm-reactor running with a sample Hello.elm file. Click on it and try it out
+- `http://$CONTAINER_IP:3000/` - Has offline docs for Elm's core libraries
 
 
 
