@@ -51,6 +51,7 @@ keysOverTime = sampleOn delta <| Signal.map2 (,) Keyboard.wasd Keyboard.arrows
 -- ... however we would like a Signal that represents the Input type we defined above.
 -- Hint:
 --   - remember `Input` can be used as a function
+--   - the overall goal is to build the Input from three Signals
 
 
 input : Signal Input

@@ -15,6 +15,9 @@ import Debug exposing (log)
 type H = H
 
 
+textBox : String -> (Int,Int) -> Element
+textBox txt (w,h) = container w h middle <| show txt
+
 -- Exercise 2.1
 -- Make a Signal such that our text box is responsive.
 -- Hint:

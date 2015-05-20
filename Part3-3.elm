@@ -75,8 +75,8 @@ main = Signal.map2 display Window.dimensions gameState
 -- Want more?
 -- If you would like to explore this example further, a good first step is to make it match the original Pong game
 -- found on the Elm website. To reach parity, try and implement:
---   - The ability to pause the game by pressing SPACE
---   - Displaying of scores
+--   1. The ability to pause the game by pressing SPACE
+--   2. Displaying of scores
 -- more at: http://elm-lang.org/blog/Pong.elm
 
 

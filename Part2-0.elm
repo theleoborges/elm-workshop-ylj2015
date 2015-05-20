@@ -28,7 +28,7 @@ textGreen = rgb 160 200 160
 
 
 
--- 2.1 Containers
+-- Containers
 textBox : String -> (Int,Int) -> Element
 textBox txt (w,h) = container w h middle <| show txt
 

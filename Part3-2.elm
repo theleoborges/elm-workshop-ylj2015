@@ -20,7 +20,7 @@ type H = H
 -- Adapt the function `display` from Part 2 by:
 --  1. making it work with any `Object`
 --  2. abstracting common code into `displayObj`
--- Hints: "de-structuring" can be useful for getting hold of data from `Game`
+-- Hints: "de-structuring" can be useful for getting hold of data from `game`
 
 displayObj : Object a -> Shape -> Form
 displayObj obj shape =

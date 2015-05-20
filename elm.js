@@ -3123,12 +3123,10 @@ Elm.Main.make = function (_elm) {
    $moduleName = "Main",
    $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
-   $Graphics$Collage = Elm.Graphics.Collage.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
    $Keyboard = Elm.Keyboard.make(_elm),
    $Signal = Elm.Signal.make(_elm),
-   $Time = Elm.Time.make(_elm),
-   $Window = Elm.Window.make(_elm);
+   $Time = Elm.Time.make(_elm);
    var dirToInt = function (dir) {
       return function () {
          switch (dir.ctor)
@@ -3136,7 +3134,7 @@ Elm.Main.make = function (_elm) {
             case "Stopped": return 0;
             case "Up": return 1;}
          _U.badCase($moduleName,
-         "between lines 212 and 215");
+         "between lines 97 and 100");
       }();
    };
    var delta = A2($Signal._op["<~"],
@@ -3195,80 +3193,6 @@ Elm.Main.make = function (_elm) {
            ,_1: 400},
    gameWidth = $._0,
    gameHeight = $._1;
-   var displayObj = F2(function (obj,
-   shape) {
-      return A2($Graphics$Collage.move,
-      {ctor: "_Tuple2"
-      ,_0: obj.x
-      ,_1: obj.y},
-      A2($Graphics$Collage.filled,
-      $Color.white,
-      shape));
-   });
-   var display = F2(function (_v1,
-   _v2) {
-      return function () {
-         return function () {
-            switch (_v1.ctor)
-            {case "_Tuple2":
-               return A3($Graphics$Element.container,
-                 _v1._0,
-                 _v1._1,
-                 $Graphics$Element.middle)(A3($Graphics$Collage.collage,
-                 gameWidth,
-                 gameHeight,
-                 _L.fromArray([A2($Graphics$Collage.filled,
-                              pongGreen,
-                              A2($Graphics$Collage.rect,
-                              gameWidth,
-                              gameHeight))
-                              ,A2(displayObj,
-                              _v2.player1,
-                              A2($Graphics$Collage.rect,
-                              10,
-                              40))
-                              ,A2(displayObj,
-                              _v2.player2,
-                              A2($Graphics$Collage.rect,
-                              10,
-                              40))
-                              ,A2(displayObj,
-                              _v2.ball,
-                              A2($Graphics$Collage.oval,
-                              15,
-                              15))])));}
-            _U.badCase($moduleName,
-            "between lines 189 and 195");
-         }();
-      }();
-   });
-   var stepObj = F2(function (t,
-   _v7) {
-      return function () {
-         return _U.replace([["x"
-                            ,_v7.x + _v7.vx * t]
-                           ,["y",_v7.y + _v7.vy * t]],
-         _v7);
-      }();
-   });
-   var stepPlyr = F3(function (t,
-   dir,
-   player) {
-      return function () {
-         var dir$ = dirToInt(dir);
-         var player$ = A2(stepObj,
-         t,
-         _U.replace([["vy"
-                     ,$Basics.toFloat(dir$) * 200]],
-         player));
-         var y$ = A3($Basics.clamp,
-         22 - halfHeight,
-         halfHeight - 22,
-         player$.y);
-         return _U.replace([["y",y$]],
-         player$);
-      }();
-   });
    var Game = F3(function (a,b,c) {
       return {_: {}
              ,ball: c
@@ -3291,6 +3215,7 @@ Elm.Main.make = function (_elm) {
                      ,ball: defaultBall
                      ,player1: player(20 - halfWidth)
                      ,player2: player(halfWidth - 20)};
+   var main = $Graphics$Element.show(defaultGame);
    var Object = F5(function (a,
    b,
    c,
@@ -3304,109 +3229,15 @@ Elm.Main.make = function (_elm) {
       b,
       _U.insert("x",a,e))));
    });
-   var stepV = F3(function (v,
-   lowerCollision,
-   upperCollision) {
-      return lowerCollision ? $Basics.abs(v) : upperCollision ? 0 - $Basics.abs(v) : v;
-   });
-   var near = F3(function (n,c,m) {
-      return _U.cmp(m,
-      n - c) > -1 && _U.cmp(m,
-      n + c) < 1;
-   });
-   var within = F2(function (ball,
-   player) {
-      return A2(near,
-      player.x,
-      8)(ball.x) && A2(near,
-      player.y,
-      20)(ball.y);
-   });
-   var stepBall = F4(function (t,
-   _v9,
-   player1,
-   player2) {
-      return function () {
-         return $Basics.not(A2(near,
-         0,
-         halfWidth)(_v9.x)) ? _U.replace([["x"
-                                          ,0]
-                                         ,["y",0]],
-         _v9) : function () {
-            var vy$ = A3(stepV,
-            _v9.vy,
-            _U.cmp(_v9.y,
-            7 - halfHeight) < 0,
-            _U.cmp(_v9.y,
-            halfHeight - 7) > 0);
-            var vx$ = A3(stepV,
-            _v9.vx,
-            A2(within,_v9,player1),
-            A2(within,_v9,player2));
-            return A2(stepObj,
-            t,
-            _U.replace([["vx",vx$]
-                       ,["vy",vy$]],
-            _v9));
-         }();
-      }();
-   });
-   var stepGame = F2(function (_v11,
-   _v12) {
-      return function () {
-         return function () {
-            return function () {
-               var ball$ = A4(stepBall,
-               _v11.delta,
-               _v12.ball,
-               _v12.player1,
-               _v12.player2);
-               var player2$ = A3(stepPlyr,
-               _v11.delta,
-               _v11.paddle2,
-               _v12.player2);
-               var player1$ = A3(stepPlyr,
-               _v11.delta,
-               _v11.paddle1,
-               _v12.player1);
-               var paddle2$ = dirToInt(_v11.paddle2);
-               var paddle1$ = dirToInt(_v11.paddle1);
-               return _U.replace([["player1"
-                                  ,player1$]
-                                 ,["player2",player2$]
-                                 ,["ball",ball$]],
-               _v12);
-            }();
-         }();
-      }();
-   });
-   var gameState = A3($Signal.foldp,
-   stepGame,
-   defaultGame,
-   input);
-   var main = A3($Signal.map2,
-   display,
-   $Window.dimensions,
-   gameState);
    var H = {ctor: "H"};
    _elm.Main.values = {_op: _op
                       ,H: H
-                      ,near: near
-                      ,within: within
-                      ,stepV: stepV
-                      ,stepBall: stepBall
-                      ,stepGame: stepGame
-                      ,main: main
                       ,Object: Object
                       ,player: player
                       ,defaultBall: defaultBall
                       ,Game: Game
                       ,defaultGame: defaultGame
-                      ,stepObj: stepObj
-                      ,stepPlyr: stepPlyr
-                      ,gameState: gameState
-                      ,displayObj: displayObj
-                      ,display: display
+                      ,main: main
                       ,gameHeight: gameHeight
                       ,gameWidth: gameWidth
                       ,halfHeight: halfHeight

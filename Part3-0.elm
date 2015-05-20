@@ -20,7 +20,6 @@ type H = H
 
 type alias Object a = { a | x:Float, y:Float, vx:Float, vy:Float }
 
-type alias Score  = Int
 type alias Player = Object {}
 type alias Ball   = Object {}
 

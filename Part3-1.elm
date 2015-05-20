@@ -29,7 +29,7 @@ stepPlyr : Time -> Direction -> Player -> Player
 stepPlyr t dir player =
     let dir'    = dirToInt dir
         player' = stepObj t { player | vy <- toFloat dir' * 200 }
-        y'      = clamp (22-halfHeight) (halfHeight-22) player'.y -- explain clamp
+        y'      = clamp (22-halfHeight) (halfHeight-22) player'.y
     in
       { player' | y <- y'}
 
