@@ -24,14 +24,74 @@ textGreen = rgb 160 200 160
 -- Finally, add the ball to the center of the court. Any size will do but 15x15 works well :)
 
 -- Solution
+ball : Color -> Float -> Form
+ball c w = filled c (oval w w)
+
+
 display : (Int,Int) -> Element
 display (w,h) =
   container w h middle <|
   collage gameWidth gameHeight
-              [ filled pongGreen (rect gameWidth gameHeight),
-                move (20-halfWidth, 0) (filled white (rect 10 40)),
-                move (halfWidth-20, 0) (filled white (rect 10 40)),
-                move (0,0)             (filled white (oval 15 15))
+              [ court gameWidth gameHeight,
+                move (20-halfWidth, 0) <| paddle white 10 40,
+                move (halfWidth-20, 0) <| paddle white 10 40,
+                move (0, 0)            <| ball   white 15
               ]
 
 main = Signal.map display Window.dimensions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Supporting functions and data structures from previous exercises
+--
+
+
+court : Float -> Float -> Form
+court w h = filled pongGreen (rect w h)
+
+paddle : Color -> Float -> Float -> Form
+paddle c w h = filled c (rect w h)

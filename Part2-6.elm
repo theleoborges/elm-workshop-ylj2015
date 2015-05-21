@@ -25,11 +25,14 @@ textGreen = rgb 160 200 160
 -- Since we'll draw on white background, make sure the paddle is any colour other than white
 
 -- Solution
+paddle : Color -> Float -> Float -> Form
+paddle c w h = filled c (rect w h)
+
 displayPaddle : (Int,Int) -> Element
 displayPaddle (w,h) =
   container w h middle <|
   collage gameWidth gameHeight
-              [ (filled black (rect 10 40))
+              [ paddle black 10 40
               ]
 
 main = Signal.map displayPaddle Window.dimensions

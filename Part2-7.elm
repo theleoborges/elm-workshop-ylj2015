@@ -28,9 +28,60 @@ display : (Int,Int) -> Element
 display (w,h) =
   container w h middle <|
   collage gameWidth gameHeight
-              [ filled pongGreen (rect gameWidth gameHeight),
-                move (20-halfWidth, 0) (filled white (rect 10 40)),
-                move (halfWidth-20, 0) (filled white (rect 10 40))
+              [ court gameWidth gameHeight,
+                move (20-halfWidth, 0) <| paddle white 10 40,
+                move (halfWidth-20, 0) <| paddle white 10 40
               ]
 
 main = Signal.map display Window.dimensions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Supporting functions and data structures from previous exercises
+--
+
+
+court : Float -> Float -> Form
+court w h = filled pongGreen (rect w h)
+
+paddle : Color -> Float -> Float -> Form
+paddle c w h = filled c (rect w h)

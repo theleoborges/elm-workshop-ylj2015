@@ -28,11 +28,14 @@ textGreen = rgb 160 200 160
 
 
 -- Solution
+court : Float -> Float -> Form
+court w h = filled pongGreen (rect w h)
+
 displayCourt : (Int,Int) -> Element
 displayCourt (w,h) =
   container w h middle <|
   collage gameWidth gameHeight
-   [ filled pongGreen   (rect gameWidth gameHeight)]
+   [ court gameWidth gameHeight ]
 
 
 main = Signal.map displayCourt Window.dimensions
