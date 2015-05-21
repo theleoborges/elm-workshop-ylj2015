@@ -40,6 +40,13 @@ boot2docker init
 boot2docker start
 ```
 
+In order access the applications on ports 3000 and 8000 on the host system, you will need to port forward ports 3000 and 8000 through VirtualBox from the boot2docker image to the host system.
+
+Go to VirtualBox > boot2docker-vm > Settings > Network > Port Forwarding and add the following rules:
+
+1. Protocol:TCP, Host Ip:127.0.0.1, Host Port:3000, Guest Port:3000
+2. Protocol:TCP, Host Ip:127.0.0.1, Host Port:8000, Guest Port:8000
+
 Then continue the setup as described above.
 
 ## Setup - non-docker way
