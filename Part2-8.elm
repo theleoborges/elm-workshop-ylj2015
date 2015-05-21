@@ -23,8 +23,61 @@ textGreen = rgb 160 200 160
 -- Exercise 2.7
 -- Finally, add the ball to the center of the court. Any size will do but 15x15 works well :)
 
+ball : Color -> Float -> Form
+ball c w = H
+
+
 display : (Int,Int) -> Element
 display (w,h) =
   H
 
 main = Signal.map display Window.dimensions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Supporting functions and data structures from previous exercises
+--
+
+
+court : Float -> Float -> Form
+court w h = filled pongGreen (rect w h)
+
+paddle : Color -> Float -> Float -> Form
+paddle c w h = filled c (rect w h)

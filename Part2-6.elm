@@ -24,8 +24,11 @@ textGreen = rgb 160 200 160
 -- Using the same ideas from the previous exercise, create a scene with a paddle of dimensions 10x40 in it.
 -- Since we'll draw on white background, make sure the paddle is any colour other than white
 
+paddle : Color -> Float -> Float -> Form
+paddle c w h = H
+
 displayPaddle : (Int,Int) -> Element
-displayPaddle (w,h) =
-  H
+displayPaddle (w,h) = H
+
 
 main = Signal.map displayPaddle Window.dimensions

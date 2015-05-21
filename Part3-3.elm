@@ -64,7 +64,7 @@ stepGame {paddle1,paddle2,delta}
   in
       { game | player1 <- player1'
              , player2 <- player2'
-             , H}
+             , ball    <- H}
 
 main = Signal.map2 display Window.dimensions gameState
 

@@ -27,4 +27,44 @@ display : (Int,Int) -> Element
 display (w,h) =
   H
 
-main = Signal.map display Window.dimensions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Supporting functions and data structures from previous exercises
+--
+
+
+court : Float -> Float -> Form
+court w h = filled pongGreen (rect w h)
+
+paddle : Color -> Float -> Float -> Form
+paddle c w h = filled c (rect w h)

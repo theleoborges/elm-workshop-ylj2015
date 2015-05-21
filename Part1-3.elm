@@ -36,27 +36,63 @@ intToDir x =
 
 
 
--- Exercise 1.1
--- Consider the following signal
---
-keysOverTime : Signal ({ x : Int, y : Int }, { x : Int, y : Int })
-keysOverTime = sampleOn delta <| Signal.map2 (,) Keyboard.wasd Keyboard.arrows
-
--- main : Signal Element
--- main = Signal.map show keysOverTime
-
---
--- It represents the input signals over time, which is useful but as hinted by our helper functions
--- it would be best to turn these objects in Directions so we don't have to remember what 1 or -1 means.
---
--- Write another signal `paddlesOverTime` which does exactly that
-
-recordToDir : { x : Int, y : Int } -> Direction
-recordToDir = H
+-- Exercise 1.2
+-- Using the helper function we defined before `recordToDir`, create a signal that represents the game input over time
+-- Hint:
+--   - remember `Input` can be used as a function
+--   - the overall goal is to build the Input from three Signals
 
 
-paddlesOverTime : Signal (Direction, Direction)
-paddlesOverTime = sampleOn delta <| H
+input : Signal Input
+input = sampleOn delta <| H
+
 
 main : Signal Element
-main = Signal.map show paddlesOverTime
+main = Signal.map show input
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Supporting functions and data structures from previous exercises
+--
+
+
+recordToDir : { x : Int, y : Int } -> Direction
+recordToDir = intToDir << .y

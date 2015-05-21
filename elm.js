@@ -3134,7 +3134,7 @@ Elm.Main.make = function (_elm) {
             case "Stopped": return 0;
             case "Up": return 1;}
          _U.badCase($moduleName,
-         "between lines 97 and 100");
+         "between lines 96 and 99");
       }();
    };
    var delta = A2($Signal._op["<~"],

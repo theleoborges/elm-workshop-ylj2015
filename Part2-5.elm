@@ -27,9 +27,11 @@ textGreen = rgb 160 200 160
 --   - the functions `containter` and `collage` might also be useful here
 
 
+court : Float -> Float -> Form
+court w h = H
+
 displayCourt : (Int,Int) -> Element
 displayCourt (w,h) =
   H
-
 
 main = Signal.map displayCourt Window.dimensions
